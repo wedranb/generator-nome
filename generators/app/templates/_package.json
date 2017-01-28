@@ -1,0 +1,25 @@
+{
+  "name": "<%= moduleName %>",
+  "version": "0.0.0",
+  "description": "<%= moduleDescription %>",
+  "license": "MIT",
+  "repository": "<%= githubUsername %>/<%= repoName %>",
+  "author": {
+    "name": "<%= name %>",
+    "email": "<%= email %>",
+    "url": "<%= websiteUrl %>"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && jest"
+  },
+  "dependencies": {
+    "meow": "^3.7.0"
+	},
+  "devDependencies": {
+    "jest": "*",
+    "xo": "*"
+  }
+}
