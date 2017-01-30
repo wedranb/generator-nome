@@ -7,7 +7,7 @@
   "author": {
     "name": "<%= name %>",
     "email": "<%= email %>",
-    "url": "<%= websiteUrl %>"
+    "url": "<%= humanizedWebsite  %>"
   },
   "engines": {
     "node": ">=4"

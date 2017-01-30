@@ -1,10 +1,12 @@
 'use strict';
 const Generator = require('yeoman-generator');
-const normalizeUrl = require('normalize-url');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const normalizeUrl = require('normalize-url');
 const humanizeUrl = require('humanize-url');
 const _s = require('underscore.string');
+const moduleName = require('./module-name');
+const fs = require('fs');
 
 module.exports = Generator.extend({
   prompting: function () {
@@ -23,7 +25,7 @@ module.exports = Generator.extend({
       {
         name: 'moduleDescription',
         message: 'What is your module description?',
-        default: `My ${superb()} module`
+        default: `My legendary module`
       },
       {
         name: 'githubUsername',
@@ -43,19 +45,41 @@ module.exports = Generator.extend({
     return this.prompt(prompts).then(function (props) {
       // To access props later use this.props.someAnswer;
       this.props = props;
-
-      console.log('This props')
     }.bind(this));
   },
 
   writing: function () {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
+    const repoName = moduleName.repoName(this.props.moduleName);
+
+    const template = {
+      moduleName: this.props.moduleName,
+      moduleDescription: this.props.moduleDescription,
+      camelModuleName: _s.camelize(repoName),
+      githubUsername: this.props.githubUsername,
+      repoName,
+      name: this.user.git.name(),
+      email: this.user.git.email(),
+      website: this.props.website,
+      humanizedWebsite: humanizeUrl(this.props.website)
+    };
+
+    const mv = (from, to) => {
+      this.fs.move(this.destinationPath(from), this.destinationPath(to));
+    };
+
+    console.log('TPL: ',template)
+    console.log('dist path', this.destinationPath);
+
+    this.fs.copyTpl([
+      `${this.templatePath()}/**`,
+    ], this.destinationPath(), template);
+  
+    fs.rename(this.destinationPath('_package.json'), this.destinationPath('package.json'), function (err) {
+      if (err) console.log('ERROR: ', err);
+    });
   },
 
   install: function () {
-    this.installDependencies();
+    this.installDependencies({ bower: false });
   }
 });
