@@ -1,4 +1,5 @@
 'use strict';
+
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
@@ -63,23 +64,26 @@ module.exports = Generator.extend({
       humanizedWebsite: humanizeUrl(this.props.website)
     };
 
-    const mv = (from, to) => {
-      this.fs.move(this.destinationPath(from), this.destinationPath(to));
-    };
-
-    console.log('TPL: ',template)
-    console.log('dist path', this.destinationPath);
-
     this.fs.copyTpl([
       `${this.templatePath()}/**`,
     ], this.destinationPath(), template);
-  
-    fs.rename(this.destinationPath('_package.json'), this.destinationPath('package.json'), function (err) {
-      if (err) console.log('ERROR: ', err);
-    });
+  },
+
+  renameFiles: function () {
+    const rn = (from, to) => {
+      fs.rename(this.destinationPath(from), this.destinationPath(to), function(error) {
+        if (error) console.log('ERROR: ', error)
+      });
+    }
+
+    rn('gitignore', '.gitignore');
+    rn('gitattributes', 'gitattributes');
+    rn('editorconfig', '.editorconfig');
   },
 
   install: function () {
+    this.renameFiles();
+    
     this.installDependencies({ bower: false });
   }
 });
