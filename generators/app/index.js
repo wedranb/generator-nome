@@ -67,23 +67,17 @@ module.exports = Generator.extend({
     this.fs.copyTpl([
       `${this.templatePath()}/**`,
     ], this.destinationPath(), template);
-  },
 
-  renameFiles: function () {
-    const rn = (from, to) => {
-      fs.rename(this.destinationPath(from), this.destinationPath(to), function(error) {
-        if (error) console.log('ERROR: ', error)
-      });
-    }
+    const mv = (from, to) => {
+      this.fs.move(this.destinationPath(from), this.destinationPath(to));
+    };
 
-    rn('gitignore', '.gitignore');
-    rn('gitattributes', 'gitattributes');
-    rn('editorconfig', '.editorconfig');
+    mv('gitignore', '.gitignore');
+    mv('gitattributes', 'gitattributes');
+    mv('editorconfig', '.editorconfig');
   },
 
   install: function () {
-    this.renameFiles();
-    
     this.installDependencies({ bower: false });
   }
 });

@@ -1,10 +1,14 @@
 'use strict';
-module.exports = (input, opts) => {
-	if (typeof input !== 'string') {
-		throw new TypeError(`Expected a string, got ${typeof input}`);
-	}
 
-	opts = opts || {};
+/**
+ * Returns the sum of a and b
+ * 
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number} Sum of a and b
+ */
+function sum(a, b) {
+	return a + b;
+}
 
-	return input + ' & ' + (opts.postfix || 'rainbows');
-};
+module.exports = sum;
