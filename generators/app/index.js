@@ -72,9 +72,12 @@ module.exports = Generator.extend({
       this.fs.move(this.destinationPath(from), this.destinationPath(to));
     };
 
+    mv('_package.json', '.package.json');
     mv('gitignore', '.gitignore');
     mv('gitattributes', 'gitattributes');
     mv('editorconfig', '.editorconfig');
+    mv('flowconfig', '.flowconfig');
+    mv('babelrc', '.babelrc');
   },
 
   install: function () {

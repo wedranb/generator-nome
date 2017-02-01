@@ -1,4 +1,4 @@
-'use strict';
+// @flow
 
 /**
  * Returns the sum of a and b
