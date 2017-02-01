@@ -78,6 +78,6 @@ module.exports = Generator.extend({
   },
 
   install: function () {
-    this.installDependencies({ bower: false });
+    this.installDependencies({ bower: false, yarn: true });
   }
 });

@@ -15,11 +15,12 @@
   "scripts": {
     "test": "xo && jest"
   },
-  "dependencies": {
-    "meow": "^3.7.0"
-	},
   "devDependencies": {
     "jest": "*",
     "xo": "*"
+  },
+  "xo": {
+    "space": true,
+    "envs": ["jest"]
   }
 }
