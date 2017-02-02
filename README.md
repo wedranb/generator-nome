@@ -1,13 +1,15 @@
-# generator-nome [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-nome
 > Scaffold out a node module
+
+![](screenshot.png)
 
 ## Installation
 
 First, install [Yeoman](http://yeoman.io) and generator-nome using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
-npm install -g yo
-npm install -g generator-nome
+yarn global add yo
+yarn global add generator-nome
 ```
 
 Then generate your new project:
@@ -16,21 +18,14 @@ Then generate your new project:
 yo nome
 ```
 
-## Getting To Know Yeoman
+There are multiple command-line options available:
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+```
+Usage:
+  yarn test                 # It will run xo, flow and jest to test your code
+  yarn prepublish           # Compile code with babel from src/ to lib/ and copy type definitions from .js and create file with .flow suffix
+```
 
 ## License
 
 MIT © [Vedran Blazenka](http://vblazenka.com)
-
-
-[npm-image]: https://badge.fury.io/js/generator-nome.svg
-[npm-url]: https://npmjs.org/package/generator-nome
-[travis-image]: https://travis-ci.org/wedranb/generator-nome.svg?branch=master
-[travis-url]: https://travis-ci.org/wedranb/generator-nome
-[daviddm-image]: https://david-dm.org/wedranb/generator-nome.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/wedranb/generator-nome
