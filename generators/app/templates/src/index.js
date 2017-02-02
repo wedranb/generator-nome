@@ -1,3 +1,5 @@
+// @flow
+
 /**
  * Returns the sum of a and b
  *
@@ -5,7 +7,7 @@
  * @param {Number} b
  * @returns {Number} Sum of a and b
  */
-function sum(a, b) {
+function sum(a: number, b: number): number {
   return a + b;
 }
 

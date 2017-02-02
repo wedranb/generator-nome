@@ -13,13 +13,14 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "xo && jest && flow",
+    "test": "xo && flow && jest",
     "prepublish": "yarn run babel-prepublish && yarn run flow-prepublish",
     "babel-prepublish": "babel src/ -d lib",
     "flow-prepublish": "flow-copy-source src lib"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
+    "babel-eslint": "^7.1.1",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-es2015": "^6.22.0",
     "eslint-plugin-flowtype": "^2.30.0",
@@ -35,6 +36,9 @@
     ],
     "plugins": [
       "flowtype"
+    ],
+    "extends": [
+      "plugin:flowtype/recommended"
     ]
   },
   "files": [

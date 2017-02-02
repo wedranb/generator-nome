@@ -7,7 +7,6 @@ const normalizeUrl = require('normalize-url');
 const humanizeUrl = require('humanize-url');
 const _s = require('underscore.string');
 const moduleName = require('./module-name');
-const fs = require('fs');
 
 module.exports = Generator.extend({
   prompting: function () {
@@ -65,22 +64,22 @@ module.exports = Generator.extend({
     };
 
     this.fs.copyTpl([
-      `${this.templatePath()}/**`,
+      `${this.templatePath()}/**`
     ], this.destinationPath(), template);
 
     const mv = (from, to) => {
       this.fs.move(this.destinationPath(from), this.destinationPath(to));
     };
 
-    mv('_package.json', '.package.json');
+    mv('_package.json', 'package.json');
     mv('gitignore', '.gitignore');
-    mv('gitattributes', 'gitattributes');
+    mv('gitattributes', '.gitattributes');
     mv('editorconfig', '.editorconfig');
     mv('flowconfig', '.flowconfig');
     mv('babelrc', '.babelrc');
   },
 
   install: function () {
-    this.installDependencies({ bower: false, yarn: true });
+    this.installDependencies({npm: false, bower: false, yarn: true});
   }
 });

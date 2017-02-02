@@ -1,3 +1,6 @@
+declare var jest: any;
+
+// @flow
 const sum = require('../');
 
 test('adds 2 + 3 to equal 5', () => {
