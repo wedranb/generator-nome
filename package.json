@@ -1,7 +1,7 @@
 {
   "name": "generator-nome",
-  "version": "0.0.0",
-  "description": "Scaffold out a node module",
+  "version": "1.0.0",
+  "description": "Scaffold out a node module with xo JS style linter, Flow type checking and Jest for testing.",
   "homepage": "vblazenka.com",
   "author": {
     "name": "Vedran Blazenka",
