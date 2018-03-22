@@ -1,4 +1,4 @@
-# generator-nome
+[deprecated]  # generator-nome
 > Scaffold out a node module with [xo](https://github.com/sindresorhus/xo) JS style linter, [Flow](https://flowtype.org/) type checking and [Jest](https://facebook.github.io/jest/) for testing
 
 Personal generator for scaffolding npm modules.
